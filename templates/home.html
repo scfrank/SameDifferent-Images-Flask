@@ -1,0 +1,64 @@
+<!doctype html>
+<!--
+  --!>
+<html>
+    <head>
+        <title>{% block title %}Bird Pose Task{% endblock %}</title>
+        <link rel="stylesheet" href="/static/css/minimal.css">
+        <link rel="stylesheet" href="/static/css/minimal-inputs.css">
+    </head>
+
+    <body>
+
+    <p>
+    Your task is to decide whether the birds in the images have the same or different poses: are their body configurations the same?</p>
+
+    <p>Two birds can have the same pose but be facing in different directions, or be photographed from different angles. Birds belonging to different species can have the same pose, despite looking very different.
+    </p>
+
+    <p> Here are some examples, but don't think too much about this task! </p>
+
+    <p> These two birds have the same pose: </p>
+
+    <div class="flex-container" style="min-height:200px">
+    <div>
+        <img src="/static/examples/Sooty_Albatross_0066_796382.jpg" style="max-width:260px;width:100%" />
+      </div>
+      <div>
+      <img src="/static/examples/Brown_Pelican_0012_94079.jpg" style="max-width:260px;width:100%" />
+      </div>
+    </div>
+
+    <p> These two birds have the same pose: </p>
+
+    <div class="flex-container" style="min-height:200px">
+      <div>
+        <img src="/static/examples/Dark_Eyed_Junco_0021_66261.jpg" style="max-width:260px;width:100%" />
+      </div>
+
+      <div>
+        <img src="/static/examples/Gadwall_crop.png" style="max-width:260px;width:100%" />
+      </div>
+    </div>
+
+    <p> These two birds do <b>not</b> have the same pose (wing position differs): </p>
+
+    <div class="flex-container" style="min-height:200px">
+      <div>
+        <img src="/static/examples/Rufous_Hummingbird_0011_59480.jpg" style="max-width:260px;width:100%" />
+      </div>
+
+      <div>
+        <img src="/static/examples/Rufous_Hummingbird_0048_58478.jpg" style="max-width:260px;width:100%" />
+      </div>
+    </div>
+
+
+    <div class="col-md-12 label-block">
+      <form action="{{ url_for('birds') }}">
+        <button type="submit" class="btn btn-success btn-lg btn-block">Start Bird Poses!</button>
+      </form>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,94 @@
+/* Hacked together based on:
+ * https://jgthms.com/web-design-in-4-minutes/ 
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #555;
+  margin: 0; /* auto; auto puts too much padding*/
+  max-width: 50em;
+  font-family: "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  padding: 2em 1em;
+}
+
+h1 {
+  font-size: 2.5em
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em
+}
+
+h2, h3 {
+  margin-top: 1.5em;
+}
+
+h1, h2, strong {
+  color: #333;
+}
+
+code, pre {
+  background: #eee;
+}
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+}
+
+pre {
+  border-left: 2px solid #bbb;
+  padding: 1em;
+}
+
+a {
+  color: #f56a6a;
+}
+
+blockquote, q {
+  border-left: solid 4px #bbb;
+  font-style: italic;
+  margin: 0 0 2em 0;
+  padding: 0.5em 0 0.5em 2em;
+}
+
+blockquote::before, blockquote::after, q::before, q::after {
+    content: '';
+    content: none;
+}
+
+
+/*SCF trying to get things to work */
+
+img {
+  text-align:center;
+  display: block;
+  max-width:350px;
+  max-height:350px;
+  width: auto;
+  height: auto;
+}
+
+.flex-container {
+      /*background-color: #222;  debugging */
+      width: 100%;
+      min-height: 400px;
+      display: -webkit-flex; /* Safari */
+      display: flex; /* Standard syntax */
+      align-items: center;
+      justify-content: center;
+}
+.flex-container div {
+    -webkit-flex: 1; /* Safari */
+    -ms-flex: 1; /* IE 10 */
+    flex: 1; /* Standard syntax */
+    margin: auto;
+  }

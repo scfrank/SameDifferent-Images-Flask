@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}Bird Poses{% endblock %}</title>
+        <link rel="stylesheet" href="/static/css/minimal.css">
+        <link rel="stylesheet" href="/static/css/minimal-inputs.css">
+    </head>
+
+    <body>
+
+      <div>
+      <form action="{{ url_for('save_birds') }}" method="POST">
+        <input type = "hidden" name = "image1" value = "{{image1}}" />
+        <input type = "hidden" name = "image2" value = "{{image2}}" />
+        <!--<form method="post" action="/"> --->
+      <input type="submit" value="Same" name="same"/>
+      <input type="submit" value="Different" name="different" />
+      </form>
+      </div>
+
+      <div class="flex-container">
+        <div>
+          <img class=".center-block image" src="{{image1}}" />
+      </div>
+        <div>
+          <img class=".center-block image" src="{{image2}}" />
+      </div>
+    </div>
+
+    </body>
+</html>
