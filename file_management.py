@@ -41,6 +41,8 @@ def write_new_row(data, session_id):
 
 # Checks if a pair of images already exists in CSV file
 # (regardless of order)
+# UNUSED: each session gets a new random set of images,
+# ie. don't worry about duplicates.
 def is_pair_labelled(filename1, filename2, CSVPATH):
     with open(CSVPATH, newline="") as csvfile:
         my_content = csv.reader(csvfile, delimiter=",")
@@ -64,13 +66,15 @@ def get_images_labelling_list(N=100):
     pairs_to_label = set()
     csv_exists = os.path.isfile(PAIRS_CSV)
     images_glob = set(glob.glob(BIRDIMAGES + "/*.jpg"))
-    print("images", len(images_glob))
+    # print("images", len(images_glob))
     # If CSV File Exists
     for i in range(N):
         (f1, f2) = random.sample(images_glob, 2)
+        if f1 == f2:
+            continue
         if f2 < f1:  # unique pairs by enforcing ordering
             f1, f2 = f2, f1
-        if csv_exists:
+        if False:  #  if csv_exists:  # don't worry about duplicates anymore
             if not is_pair_labelled(f1, f2, PAIRS_CSV):
                 pairs_to_label.add((f1, f2))
         else:

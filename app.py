@@ -20,13 +20,15 @@ from file_management import get_images_labelling_list, write_new_row
 app = Flask(__name__)
 app.secret_key = b"--a]a1k?qOd#=/VLc2*I0M6[y"
 
-image_list = list()
-bird_count = 0
+# image_list = list()
+#bird_count = 0
 
 
 @app.route("/")
 def index():
     session["number"] = consequent_integers.__next__()
+    session["bird_count"] = 0
+    session["image_list"] = []
     return render_template("home.html")
 
 
@@ -39,20 +41,20 @@ def save_birds():
     write_new_row(
         response_dict, session_id=session["number"]
     )  # make sure this format works
-    global bird_count
-    bird_count += 1
+    #global bird_count
+    session["bird_count"] += 1
     return response
 
 
 @app.route("/birds")
 def birds():
-    global image_list  # pairs of bird files
-    if len(image_list) == 0:
-        image_list = get_images_labelling_list()  # default length=100
-    else:
-        print(f"Images Left: {len(image_list) - bird_count}")
+    #global image_list  # pairs of bird files
+    if len(session["image_list"]) == 0:
+        session["image_list"] = get_images_labelling_list()  # default length=100
+    #else:
+    #    print(f"Images Left: {len(image_list) - bird_count}")
     try:
-        f1, f2 = image_list[bird_count]  # image pairs to rate
+        f1, f2 = session["image_list"][session["bird_count"]]  # image pairs to rate
         if random.random() > 0.5:
             f1, f2 = f2, f1
         return render_template(
