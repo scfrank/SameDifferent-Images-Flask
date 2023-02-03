@@ -49,8 +49,11 @@ def save_birds():
 @app.route("/birds")
 def birds():
     #global image_list  # pairs of bird files
-    if len(session["image_list"]) == 0:
-        session["image_list"] = get_images_labelling_list()  # default length=100
+    try:
+        if len(session["image_list"]) == 0:
+            session["image_list"] = get_images_labelling_list()  # default length=100
+    except KeyError: # for some reason we don't have session yet
+        return index()
     #else:
     #    print(f"Images Left: {len(image_list) - bird_count}")
     try:
