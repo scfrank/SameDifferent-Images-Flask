@@ -78,15 +78,26 @@ img {
 }
 
 .flex-container {
-      /*background-color: #222;  debugging */
+      /*background-color: #111;  /*debugging */
       width: 100%;
       min-height: 400px;
       display: -webkit-flex; /* Safari */
+      align-items: flex-start;
+      justify-content: space-around; /*center;*/
       display: flex; /* Standard syntax */
-      align-items: center;
-      justify-content: center;
+      /*flex-direction: row;*/
+      flex-flow: row wrap;  /* this should wrap on small enough screens? except for shrinking*/
+      row-gap: 20px;  /*separate items when stacked*/
 }
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 .flex-container div {
+    /*background-color: red;  /*debugging */
     -webkit-flex: 1; /* Safari */
     -ms-flex: 1; /* IE 10 */
     flex: 1; /* Standard syntax */
